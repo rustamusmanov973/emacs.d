@@ -32,3 +32,14 @@
   (spacemacs/setup-startup-hook)
   (require 'server)
   (unless (server-running-p) (server-start)))
+(add-to-list 'auto-mode-alist '("\\.fnl\\'" . clojure-mode))
+(add-to-list 'auto-mode-alist '("\\.scpt\\'" . applescript-mode))
+(defun toggle-maximize-buffer () "Maximize buffer"
+       (interactive)
+       (if (= 1 (length (window-list)))
+           (jump-to-register '_) 
+         (progn
+           (window-configuration-to-register '_)
+           (delete-other-windows))))
+
+(put 'narrow-to-page 'disabled nil)
